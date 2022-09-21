@@ -1,31 +1,29 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
-import { Row, Col, Image, ListGroup, Card, Button } from "react-bootstrap";
+import { useDispatch, useSelector } from "react-redux";
+import { Row, Col, Image, ListGroup, Card, Button, Alert } from "react-bootstrap";
 import Rating from "../components/Rating";
-import axios from "axios";
+import { listProductDetails } from "../reducer/productAction";
+import { ClimbingBoxLoader } from "react-spinners";
 
 function ProductPage() {
-  const [product, setProduct] = useState([]);
   let { id } = useParams();
+  const dispatch = useDispatch();
+
+  const productDetails = useSelector((state) => state.productDetails);
+  const { loading, product, error } = productDetails;
 
   useEffect(() => {
-    async function fetchProduct() {
-      try {
-        const res = await axios.get(`/api/products/${id}`);
-        setProduct(res.data);
-      } catch (err) {
-        alert(err.code);
-      }
-    }
-
-    fetchProduct();
-  }, [id]);
+    dispatch(listProductDetails(id));
+  }, [dispatch, id]);
 
   return (
     <>
       <Link to='/' className='btn btn-dark my-3'>
         Go back
       </Link>
+
+      {loading ? <ClimbingBoxLoader color="#36d7b7" size={20} /> : error ? <Alert variant="danger">{error}</Alert> :
 
       <Row>
         <Col md={6}>
@@ -73,14 +71,19 @@ function ProductPage() {
               </ListGroup.Item>
 
               <ListGroup.Item>
-                <Button className='w-100' variant="info" type='button' disabled={product.countInStock === 0}>
+                <Button
+                  className='w-100'
+                  variant='info'
+                  type='button'
+                  disabled={product.countInStock === 0}
+                >
                   ADD TO CART
                 </Button>
               </ListGroup.Item>
             </ListGroup>
           </Card>
         </Col>
-      </Row>
+      </Row>}
     </>
   );
 }
