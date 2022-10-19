@@ -7,7 +7,7 @@ function Footer() {
         <Container>
             <Row>
                 <Col className="text-center py-3">
-                    Copyright &copy; ProShop
+                    Project based on Udemy course: <a target="_blank" rel="noreferrer" href="https://www.udemy.com/course/mern-ecommerce/">https://www.udemy.com/course/mern-ecommerce/</a>
                 </Col>
             </Row>
         </Container>
