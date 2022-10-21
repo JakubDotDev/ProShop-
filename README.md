@@ -3,6 +3,8 @@
 
 > eCommerce platform built with the MERN stack & Redux.
 
+> Link to deployed project: https://jakubdotdev-proshop.herokuapp.com/
+
 ## Features
 
 - Full featured shopping cart
