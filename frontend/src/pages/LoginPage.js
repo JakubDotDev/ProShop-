@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Helmet } from "react-helmet";
 import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import { Form, Button, Row, Col, Alert } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
@@ -29,44 +30,51 @@ function LoginPage() {
   }
 
   return (
-    <FormContainer>
-      <h1>Sign in</h1>
-      {error && <Alert variant='danger'>{error}</Alert>}
-      {loading && <BarLoader color='#00000' />}
-      <Form onSubmit={submitHandler}>
-        <Form.Group controlId='email'>
-          <Form.Label>Email Address</Form.Label>
-          <Form.Control
-            type='email'
-            placeholder='Enter email'
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          ></Form.Control>
-        </Form.Group>
+    <>
+      <Helmet>
+        <title>ProShop | Login</title>
+      </Helmet>
+      <FormContainer>
+        <h1>Sign in</h1>
+        {error && <Alert variant='danger'>{error}</Alert>}
+        {loading && <BarLoader color='#00000' />}
+        <Form onSubmit={submitHandler}>
+          <Form.Group controlId='email'>
+            <Form.Label>Email Address</Form.Label>
+            <Form.Control
+              type='email'
+              placeholder='Enter email'
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            ></Form.Control>
+          </Form.Group>
 
-        <Form.Group controlId='password' className='my-3'>
-          <Form.Label>Enter password</Form.Label>
-          <Form.Control
-            type='password'
-            placeholder='Enter password'
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          ></Form.Control>
-        </Form.Group>
+          <Form.Group controlId='password' className='my-3'>
+            <Form.Label>Enter password</Form.Label>
+            <Form.Control
+              type='password'
+              placeholder='Enter password'
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            ></Form.Control>
+          </Form.Group>
 
-        <Button type='submit' variant='success'>
-          Sign In
-        </Button>
-      </Form>
-      <Row className='py-3'>
-        <Col>
-          New Customer?{" "}
-          <Link to={redirect ? `/register?redirect=${redirect}` : "/register"}>
-            Register
-          </Link>
-        </Col>
-      </Row>
-    </FormContainer>
+          <Button type='submit' variant='success'>
+            Sign In
+          </Button>
+        </Form>
+        <Row className='py-3'>
+          <Col>
+            New Customer?{" "}
+            <Link
+              to={redirect ? `/register?redirect=${redirect}` : "/register"}
+            >
+              Register
+            </Link>
+          </Col>
+        </Row>
+      </FormContainer>
+    </>
   );
 }
 

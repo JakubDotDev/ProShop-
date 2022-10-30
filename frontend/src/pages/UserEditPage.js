@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { BarLoader } from "react-spinners";
 import { getUserDetails, updateUser } from "../reducer/userAction";
 import FormContainer from "../components/FormContainer";
+import { Helmet } from "react-helmet";
 
 function UserEditPage() {
   const { id } = useParams();
@@ -43,6 +44,9 @@ function UserEditPage() {
 
   return (
     <>
+      <Helmet>
+        <title>ProShop | Admin </title>
+      </Helmet>
       <Link to='/admin/userList' className='btn btn-dark my-3'>
         Go back
       </Link>

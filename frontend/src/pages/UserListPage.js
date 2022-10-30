@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { Helmet } from "react-helmet";
 import { LinkContainer } from "react-router-bootstrap";
 import { useNavigate } from "react-router-dom";
 import { Button, Table, Alert } from "react-bootstrap";
@@ -29,6 +30,9 @@ function UserListPage() {
 
   return (
     <>
+      <Helmet>
+        <title>ProShop | Admin </title>
+      </Helmet>
       <h1>Users:</h1>
       {loading ? (
         <BarLoader />

@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { Helmet } from "react-helmet";
 import { LinkContainer } from "react-router-bootstrap";
 import { useNavigate } from "react-router-dom";
 import { Button, Table, Alert, Row, Col } from "react-bootstrap";
@@ -53,7 +54,7 @@ function ProductListPage() {
     successDelete,
     createdProduct,
     successCreate,
-    pageNumber
+    pageNumber,
   ]);
 
   function deleteHandler(id) {
@@ -68,6 +69,9 @@ function ProductListPage() {
 
   return (
     <>
+      <Helmet>
+        <title>ProShop | Admin </title>
+      </Helmet>
       <Row className='align-items-center'>
         <Col>
           <h1>Products</h1>

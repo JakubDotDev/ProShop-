@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { Helmet } from "react-helmet";
 import { LinkContainer } from "react-router-bootstrap";
 import { useNavigate } from "react-router-dom";
 import { Button, Table, Alert } from "react-bootstrap";
@@ -25,6 +26,9 @@ function OrderAdminListPage() {
 
   return (
     <>
+      <Helmet>
+        <title>ProShop | Admin </title>
+      </Helmet>
       <h1>Orders</h1>
       {loading ? (
         <BarLoader />
@@ -66,7 +70,7 @@ function OrderAdminListPage() {
                 <td>
                   <LinkContainer to={`/order/${order._id}`}>
                     <Button variant='light' className='btn-sm'>
-                        Details
+                      Details
                     </Button>
                   </LinkContainer>
                 </td>

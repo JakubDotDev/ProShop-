@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Helmet } from "react-helmet";
 import { Form, Button, Col } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
@@ -24,26 +25,31 @@ function PaymentPage() {
   }
 
   return (
-    <FormContainer>
-      <CheckoutSteps step1 step2 step3 />
-      <h1>Payment Method: </h1>
-      <Form onSubmit={submitHandler}>
-        <Col className="my-3">
-          <Form.Check
-            type='radio'
-            label='PayPal or Credit Card'
-            id='PayPal'
-            name='paymentMethod'
-            value="PayPal"
-            checked
-            onChange={(e) => setPaymentMethod(e.target.value)}
-          ></Form.Check>
-        </Col>
-        <Button className='my-3' type='submit' variant='success'>
-          Continue
-        </Button>
-      </Form>
-    </FormContainer>
+    <>
+      <Helmet>
+        <title>ProShop | CheckOut </title>
+      </Helmet>
+      <FormContainer>
+        <CheckoutSteps step1 step2 step3 />
+        <h1>Payment Method: </h1>
+        <Form onSubmit={submitHandler}>
+          <Col className='my-3'>
+            <Form.Check
+              type='radio'
+              label='PayPal or Credit Card'
+              id='PayPal'
+              name='paymentMethod'
+              value='PayPal'
+              checked
+              onChange={(e) => setPaymentMethod(e.target.value)}
+            ></Form.Check>
+          </Col>
+          <Button className='my-3' type='submit' variant='success'>
+            Continue
+          </Button>
+        </Form>
+      </FormContainer>
+    </>
   );
 }
 

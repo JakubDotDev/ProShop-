@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Helmet } from "react-helmet";
 import axios from "axios";
 import {
   Row,
@@ -90,6 +91,9 @@ function OrderPage() {
 
   return (
     <>
+      <Helmet>
+        <title>ProShop | Order: {id}</title>
+      </Helmet>
       {loading ? (
         <BarLoader />
       ) : error ? (
@@ -120,7 +124,9 @@ function OrderPage() {
                     {order.shippingAddress.country}
                   </p>
                   {order.isDelivered ? (
-                    <Alert variant='success'>Delive on {order.deliveredAt}</Alert>
+                    <Alert variant='success'>
+                      Delivered on {order.deliveredAt}
+                    </Alert>
                   ) : (
                     <Alert variant='danger'>Not Delivered</Alert>
                   )}
@@ -225,17 +231,20 @@ function OrderPage() {
                     </ListGroup.Item>
                   )}
                   {loadingDeliver && <BarLoader />}
-                  {userInfo && userInfo.isAdmin && order.isPaid && !order.isDelivered && (
-                    <ListGroup.Item>
-                      <Button
-                        type='button'
-                        className='w-100'
-                        onClick={deliverHandler}
-                      >
-                        Mark as delivered
-                      </Button>
-                    </ListGroup.Item>
-                  )}
+                  {userInfo &&
+                    userInfo.isAdmin &&
+                    order.isPaid &&
+                    !order.isDelivered && (
+                      <ListGroup.Item>
+                        <Button
+                          type='button'
+                          className='w-100'
+                          onClick={deliverHandler}
+                        >
+                          Mark as delivered
+                        </Button>
+                      </ListGroup.Item>
+                    )}
                 </ListGroup>
               </Card>
             </Col>

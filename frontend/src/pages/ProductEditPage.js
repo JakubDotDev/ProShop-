@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Helmet } from "react-helmet";
 import axios from "axios";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { Form, Button, Alert } from "react-bootstrap";
@@ -92,6 +93,10 @@ function ProductEditPage() {
 
   return (
     <>
+      <Helmet>
+        <title>ProShop | Admin </title>
+      </Helmet>
+
       <Link to='/admin/productList' className='btn btn-dark my-3'>
         Go back
       </Link>

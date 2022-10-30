@@ -11,7 +11,7 @@ import RegisterPage from "./pages/RegisterPage";
 import ProfilePage from "./pages/ProfilePage";
 import ShippingPage from "./pages/ShippingPage";
 import PaymentPage from "./pages/PaymentPage";
-import PlaceOdrderPage from "./pages/PlaceOdrderPage";
+import PlaceOrderPage from "./pages/PlaceOrderPage";
 import OrderPage from "./pages/OrderPage";
 import UserListPage from "./pages/UserListPage";
 import UserEditPage from "./pages/UserEditPage";
@@ -37,7 +37,7 @@ function App() {
             </Route>
             <Route path='/shipping' element={<ShippingPage />} />
             <Route path='/payment' element={<PaymentPage />} />
-            <Route path='/placeorder' element={<PlaceOdrderPage />} />
+            <Route path='/placeorder' element={<PlaceOrderPage />} />
             <Route path='/order/:id' element={<OrderPage />} />
             <Route path='/login' element={<LoginPage />} />
             <Route path='/register' element={<RegisterPage />} />

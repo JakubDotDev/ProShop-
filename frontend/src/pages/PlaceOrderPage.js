@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { Helmet } from "react-helmet";
 import {
   Button,
   Row,
@@ -13,7 +14,7 @@ import { Link, useNavigate } from "react-router-dom";
 import CheckoutSteps from "../components/CheckoutSteps";
 import { createOrder } from "../reducer/orderAction";
 
-function PlaceOdrderPage() {
+function PlaceOrderPage() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const cart = useSelector((state) => state.cart);
@@ -53,6 +54,9 @@ function PlaceOdrderPage() {
 
   return (
     <>
+      <Helmet>
+        <title>ProShop | CheckOut </title>
+      </Helmet>
       <CheckoutSteps step1 step2 step3 step4 />
       <Row>
         <Col md={8}>
@@ -169,4 +173,4 @@ function PlaceOdrderPage() {
   );
 }
 
-export default PlaceOdrderPage;
+export default PlaceOrderPage;
